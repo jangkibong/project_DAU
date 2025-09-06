@@ -1,0 +1,389 @@
+/* common.css */
+
+@import url(./reset.css);
+@import url(./root.css);
+@import url(./main.css);
+
+/* Pretendard Variable Font */
+@font-face {
+    font-family: "Pretendard Variable";
+    src: url("../font/PretendardVariable.woff2") format("woff2-variations");
+    font-weight: 100 900; /* 100~900까지 가변 지원 */
+    font-style: normal;
+    font-display: swap; /* 로딩 시 기본 폰트 먼저 보여주고 교체 */
+}
+/* NewYork Variable Font */
+@font-face {
+    font-family: "NewYork";
+    src: url("../font/NewYork.otf") format("opentype");
+    font-weight: 100 900; /* 100~900까지 가변 지원 */
+    font-style: normal;
+    font-display: swap; /* 로딩 시 기본 폰트 먼저 보여주고 교체 */
+}
+
+/* common */
+.sr_only {
+    position: relative;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    z-index: -1;
+}
+.hide {
+    display: none !important;
+}
+/* felx */
+.flex {
+    display: flex;
+}
+.flex.column {
+    flex-direction: column;
+}
+
+/* align - start */
+.right {
+    text-align: right;
+    justify-content: flex-end;
+}
+.center {
+    text-align: center;
+    align-items: center;
+}
+.left {
+    text-align: left;
+    justify-content: flex-start;
+}
+/* align - start */
+
+/* text & font - start */
+.bold {
+    font-weight: 600;
+}
+
+.text_divider {  /* <span class="text-dibider">|<span> 형태로 사용  */
+    margin: 0 1em;
+}
+/* text & font - end */
+
+/* button - start */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding: 1em 2.5em;
+    text-align: center;
+    background-color: var(--btn_bg_color);
+    border: 1px solid var(--btn_border_color);
+    border-radius: 3em;
+}
+
+.btn.arrow_right::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 0.8em;
+    margin-left: 1.2em;
+    background-image: url(../images/common/btn_arrow_right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* button - end */
+/* // common */
+
+/* 사이트 전체 기본 폰트 적용 */
+body {
+    overflow-x: hidden;
+    background-color: var(--bg);
+    /* font-size: 16px; */
+    font-size: 0.833331vw; /* 1920px 기준 16px */
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans KR", sans-serif;
+}
+body.no-scroll {
+    /* overflow: hidden; */
+}
+/* header */
+.wrap {
+    scroll-behavior: smooth;
+}
+/* ===== Header 전체 ===== */
+header {
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5625em 3.125em 0; /* 25px 50px 0 */
+    z-index: 1000;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    will-change: transform, opacity;
+}
+header.is-hidden {
+    transform: translateY(-100%);
+    opacity: 0; /* 페이드 아웃 */
+}
+
+/* ===== 로고 영역 ===== */
+header h1 {
+}
+header h1 a {
+    display: block;
+    height: 1.875em;
+}
+header h1 img {
+    height: 100%;
+}
+
+/* ===== GNB 네비게이션 ===== */
+header .gnb {
+    display: flex;
+    align-items: center;
+    gap: 3.125em; /* 50px */
+}
+header .gnb ul {
+    display: flex;
+    gap: 3.125em; /* 50px */
+}
+header .gnb ul li {
+}
+header .gnb .btn_menu {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 1.875em; /* 30px */
+    height: 1.875em; /* 30px */
+    text-indent: -9999px;
+    border: 0;
+}
+header .gnb .btn_menu::before,
+header .gnb .btn_menu::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 0.0625em; /* 1px */
+    background-color: var(--bk_95);
+}
+header .gnb .btn_menu::before {
+    top: 0.4375em; /* 7px */
+}
+header .gnb .btn_menu::after {
+    top: 0.875em; /* 14px */
+}
+
+/* ===== 전체 메뉴 (드로어/오버레이) ===== */
+header .menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 9.4375em 3.125em 0; /* 151px 50px 0 */
+    color: var(--wt_70);
+    background-color: var(--bk);
+    inset: 0;
+    z-index: 2000;
+    gap: 9.6875em; /* 155px */
+}
+header .menu.active {
+    display: flex;
+}
+header .menu .logo {
+    fill: var(--wt);
+    flex: none;
+    display: block;
+    width: 7.5em; /* 120px */
+}
+header .menu .bar {
+    display: block;
+    width: 0.0625em; /* 1px */
+    height: 100%;
+    background-color: var(--wt);
+    opacity: 0.5;
+}
+header .menu .btn_menu_close {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    right: 3.25em; /* 52px */
+    top: 1.75em; /* 28px */
+    width: 1.875em; /* 30px */
+    height: 1.875em; /* 30px */
+    text-indent: -9999px;
+}
+header .menu .btn_menu_close::before,
+header .menu .btn_menu_close::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1.9375em; /* 31px */
+    height: 0.0625em; /* 1px */
+    background-color: var(--wt);
+    top: 50%;
+    left: 0;
+}
+header .menu .btn_menu_close::before {
+    transform: rotate(-45deg);
+}
+header .menu .btn_menu_close::after {
+    transform: rotate(45deg);
+}
+header .menu > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75em; /* 28px */
+    flex: 1;
+    padding-left: 1.75em; /* 28px */
+}
+header .menu > ul > li {
+    width: calc(33.3333% - 1.1875em); /* 33.3333% - 19px */
+}
+header .menu .menu_title {
+    color: var(--wt);
+    font-size: 3.375em; /* 54px */
+    line-height: 1.2;
+    font-weight: 100;
+}
+header .menu .sub_menu a {
+    font-weight: 600;
+}
+
+/* // header */
+
+main,
+footer {
+}
+
+/* footer */
+.footer {
+    min-height: 15em; /* 240px */
+    padding: 0 3.125em; /* 0 50px */
+    color: var(--wt);
+    line-height: 1.5;
+    background-color: var(--bk);
+}
+
+.footer_head {
+    text-align: right;
+    border-bottom: 0.0625em solid var(--gry); /* 1px */
+}
+.footer_cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 17.75em; /* 284px */
+    margin-left: auto;
+    line-height: 3.75em; /* 60px */
+    font-weight: 600;
+}
+.footer_cta .btn_download_footer {
+    display: block;
+    overflow: hidden;
+    width: 1.5em; /* 24px */
+    height: 1.5em; /* 24px */
+    text-indent: -9999px;
+    background-image: url(../images/common/btn_download.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.footer_body {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 0 1.625em; /* 26px */
+}
+.footer_body > div {
+    margin-top: 1.625em; /* 26px */
+}
+
+.footer_logo {
+}
+
+.footer_content {
+    width: 80%;
+}
+
+/* 2) 링크 네비게이션 */
+.footer_links {
+}
+.footer_link-list {
+    display: flex;
+    gap: 1.875em; /* 30px */
+}
+.footer_link-item {
+}
+.footer_link {
+}
+
+/* 3) 회사 정보 */
+.footer_info {
+    margin-top: 1.3125em; /* 21px */
+    color: var(--wt_50);
+}
+.footer_info_content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer_address {
+}
+.footer_tel {
+}
+.footer_fax {
+}
+.footer_divider {
+}
+.footer_copy {
+}
+
+/* 4) 안내 문구 */
+.footer_note {
+    margin-top: -1em;
+    color: #dfdfdf;
+    font-size: 0.875em; /* 14px */
+    text-align: right;
+    opacity: 0.5;
+}
+
+/* 5) 반응형 */
+@media (max-width: 103.125em) {
+    /* 1650px */
+    .footer_note {
+        margin-top: 1em;
+    }
+}
+@media (max-width: 75em) {
+    /* 1200px */
+    .footer_body {
+    }
+    .footer_logo {
+    }
+    .footer_note {
+        text-align: left;
+    }
+}
+
+@media (max-width: 30em) {
+    /* 480px */
+    .footer_head {
+    }
+    .footer_cta {
+    }
+    .footer_contact {
+    }
+}
+
+section .footer {
+    position: absolute;
+    bottom: 0;
+}
+/* // footer */
+
+/* #fullpage .section {
+    min-height: 56.25em;
+} */

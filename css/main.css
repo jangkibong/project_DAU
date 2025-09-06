@@ -1,0 +1,456 @@
+/* 스크롤바 숨김 - start */
+body {
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+/* 스크롤바 숨김 - end */
+
+/* 메인화면 안의 버튼 크기 start */
+.main .btn {
+    width: 17.5em;
+}
+/* 메인화면 안의 버튼 크기 - end */
+
+/* title font - start */
+.title {
+    font-family: "NewYork", serif;
+    letter-spacing: 0.009em;
+}
+/* title font - end */
+
+/* intro -start */
+.fp_section .main_visual.intro {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1000;
+}
+.fp_section .intro .visual_img_box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.fp_section .intro .intro_content {
+    opacity: 1;
+}
+.fp_section .intro_content {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 1001;
+    transition: all 0.7s ease-in-out;
+}
+.fp_section .intro .visual_img_box .main_visual_img {
+    height: auto;
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+}
+.fp_section .intro .visual_img_box .overlay {
+}
+.fp_section .intro .main_title {
+}
+.fp_section .intro .main_title .slogan {
+}
+
+/* intro - end */
+
+/* fullpage - start */
+
+/* 화면 한 뷰포트만 보여주고, 내부는 transform으로 이동 */
+#fullpage {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 한 화면 */
+    overflow: hidden; /* 스크롤바 숨김 (이 영역은 프로그램적으로 이동) */
+}
+
+/* 섹션 묶음이 위/아래로 이동 */
+#fullpage .fullpage_track {
+    width: 100%;
+    height: 100%;
+    transition: transform 700ms ease; /* 스냅 이동 애니메이션 */
+    will-change: transform;
+}
+
+#fullpage .fp_section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 각 섹션은 한 화면 */
+}
+#fullpage .fp_section.center {
+    align-items: center;
+    justify-content: center;
+}
+
+/* (선택) 트랜지션 중에는 포인터 막기 - 중복 입력 방지 */
+#fullpage.is-animating {
+    pointer-events: none;
+}
+
+/* 일반 영역은 기본 흐름 유지 */
+#after-fullpage {
+    position: relative;
+    z-index: 0;
+}
+
+/* fullpage - end */
+
+/* 메인비주얼 - start */
+/* main_visual */
+.fp_section {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.fp_section .main_visual {
+    display: block;
+    position: absolute;
+    width: 75.25em; /* 1204px */
+    /* height: 100%; */
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    object-fit: cover;
+    transition: all 0.7s ease-in-out;
+}
+.fp_section .visual_img_box {
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+}
+.fp_section .visual_img_box .main_visual_img {
+    width: 100%;
+    height: auto;
+    /* height: 100%; */
+    /* object-fit: cover; */
+}
+.fp_section .visual_img_box .overlay {
+    color: var(--wt);
+    z-index: 10;
+    mix-blend-mode: overlay;
+    opacity: 0.7;
+}
+.fp_section .main_title {
+    position: absolute;
+    width: 100vw;
+    left: 50%;
+    bottom: 50%;
+    text-align: center;
+    color: var(--bk);
+    font-family: "NewYork", serif;
+    font-size: 11.25em; /* 180px */
+    line-height: 1.3;
+    font-weight: 400;
+    transform: translate(-50%, 50%);
+    z-index: -1;
+}
+.fp_section .main_title .slogan {
+    display: block;
+    position: relative;
+}
+
+/* main_visual - end */
+
+/* sub_visual - start */
+.sub_visual {
+    display: flex;
+    position: relative;
+    height: 56.25em; /* 900px */
+    height: 100%;
+    width: 100vw;
+    color: var(--wt);
+    background-color: var(--bk);
+}
+
+.sub_visual h2 {
+    position: absolute;
+    top: 5em; /* 80px */
+    left: 3.125em; /* 50px */
+    font-size: 1.5em; /* 24px */
+    font-weight: 100;
+    z-index: 10;
+}
+
+.sub_visual .sub_visual_content {
+    /* width: 100%; */
+    margin: 0;
+}
+.sub_titles_wrap {
+    flex: 1;
+    position: relative;
+}
+.sub_visual .sub_tilte_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex: 1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 10em 0 0;
+    margin: 0 0 5em 2.8rem;
+    z-index: 10;
+}
+.sub_visual .sub_title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0.7rem;
+    font-size: 17.5em; /* 280px */
+    line-height: 1.21;
+    font-family: "NewYork", serif;
+}
+.sub_visual .sub_title p {
+    margin-bottom: 3.75em; /* 60px */
+    margin-right: 11.375em; /* 182px */
+    text-align: right;
+}
+.sub_visual .box_image {
+    height: 56.25em; /* 900px */
+    height: 100%;
+    flex: none;
+}
+.sub_visual .sub_visual_item {
+    height: 56.25em; /* 900px */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.sub_visual .sub_visual_item img {
+    height: 100%;
+}
+
+/* === sub_visual x Swiper (레이아웃 유지) === */
+.sub_visual .sub_visual_content {
+    /* position: relative;
+    height: 100%; */
+}
+
+/* Swiper 컨테이너/래퍼/슬라이드 크기만 보장 */
+.sub_visual .swiper {
+    /* width: 100%; */
+    height: 100%;
+}
+.sub_visual .swiper-wrapper,
+.sub_visual .swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+/* 각 아이템은 그대로 (flex, 높이/폭 유지) — Swiper가 fade 시 겹쳐줌 */
+.sub_visual .sub_visual_item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 제목은 '위치'는 기존 CSS대로, '투명도'만 전환 */
+.sub_visual .sub_tilte_wrap {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 700ms ease, visibility 700ms step-end;
+    will-change: opacity, visibility;
+}
+.sub_visual .sub_tilte_wrap.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 700ms ease, visibility 0s step-start;
+}
+
+/* sub_visual - end */
+
+/* project swiper */
+.swiper_wrap {
+    width: calc(100% - 5.26em);
+    height: calc(100% - 10.4em);
+    max-height: 47.6em;
+}
+
+.swiper_wrap .swiper {
+    display: flex;
+    position: relative;
+}
+.swiper_wrap .swiper_item {
+    width: 100%;
+    flex: none;
+}
+.swiper_wrap .swiper_item_header {
+    height: fit-content;
+    margin-bottom: 1.26em;
+}
+
+.swiper_wrap .swiper_item_header {
+    position: relative;
+    text-align: right;
+}
+
+.swiper_wrap .swiper_item_header .title {
+    position: absolute;
+    bottom: -0.51em;
+    font-size: 5.1em;
+}
+
+.swiper_wrap .swiper_image_wrap {
+    height: 40em;
+}
+.swiper_wrap .swiper_image_wrap img {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.swiper_wrap .swiper_itme_footer {
+    margin-top: 1.1em;
+}
+.swiper_wrap .swiper_itme_footer .swiper_item_info {
+    display: flex;
+    align-items: center;
+    padding-left: 0.03em;
+    font-size: 2em;
+    font-weight: 500;
+    gap: 0.5em;
+}
+.swiper_wrap .swiper_itme_footer .info_sub {
+    color: var(--text_gray);
+    font-size: 0.375em;
+}
+
+/* project controls */
+.project-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 2em;
+    z-index: 1;
+}
+.project-controls .swiper-pagination {
+    position: static; /* Swiper 기본 absolute 제거 */
+}
+.project-controls .swiper-play-toggle {
+    overflow: hidden;
+    width: 0.7502em;
+    height: 0.7502em;
+    text-indent: -9999px;
+    background-image: url(../images/common/btn_pause.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.project-controls .swiper-play-toggle.is-paused {
+    background-image: url(../images/common/btn_play.svg);
+}
+.project-controls .swiper-pagination-bullet {
+    width: 0.7502em;
+    height: 0.7502em;
+    border-radius: 0;
+    background-color: transparent;
+    border: 1px solid var(--text_gray);
+    opacity: 1;
+}
+
+.project-controls .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    border-color: var(--bk);
+    background-color: var(--bk);
+}
+
+/* project 좌/우 버튼 위치 보정 */
+.swiper_wrap {
+    position: absolute; /* 버튼 absolute 기준 */
+}
+.swiper_wrap .swiper-button-prev,
+.swiper_wrap .swiper-button-next {
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    border-radius: 2.5em;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px #0000003d;
+}
+.swiper_wrap .swiper-button-prev {
+    left: 1.25rem;
+    background-image: url(../images/common/swiper_btn_left.png);
+}
+.swiper_wrap .swiper-button-next {
+    right: 1.25rem;
+    background-image: url(../images/common/swiper_btn_right.png);
+}
+.swiper_wrap .swiper-button-prev::after,
+.swiper_wrap .swiper-button-next::after {
+    display: none;
+}
+
+/* default fp_section - start */
+.fp_section_contents.flex {
+    justify-content: space-between;
+}
+.fp_section_header {
+    display: flex;
+    align-items: center;
+    height: 5.16em;
+    padding: 0 3.2em;
+}
+
+.fp_section_header .title {
+    font-size: 5.09em;
+    position: relative;
+    top: 0.3em;
+}
+
+.fp_section .sub_title {
+    margin-top: 0.6em;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.313em;
+}
+
+.fp_section .sub_title + p {
+    margin-top: 0.9em;
+    line-height: 1.12;
+}
+
+.fp_section .sub_title + p + .btn.arrow_right {
+    margin-top: 2.3em;
+}
+/* default fp_section - end */
+
+/* demo size */
+.fp_section.demo3,
+.fp_section.demo4 {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+.fp_section.demo4_bg {
+    background-image: url(../images/demo/main_section_4_1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.fp_section.demo3 img {
+    width: 113.75em; /* 1820px */
+}
+.fp_section.demo4 img {
+}
+.fp_section.demo4 img:last-child {
+}
+/* // demo size */

@@ -105,6 +105,40 @@ body {
 
 /* fullpage - end */
 
+/* default fp_section - start */
+.fp_section_contents.flex {
+    justify-content: space-between;
+}
+.fp_section_header {
+    display: flex;
+    align-items: center;
+    height: 5.16em;
+    padding: 0 3.2em;
+}
+
+.fp_section_header .title {
+    font-size: 5.09em;
+    position: relative;
+    top: 0.3em;
+}
+
+.fp_section .sub_title {
+    margin-top: 0.6em;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.313em;
+}
+
+.fp_section .sub_title + p {
+    margin-top: 0.9em;
+    line-height: 1.12;
+}
+
+.fp_section .sub_title + p + .btn.arrow_right {
+    margin-top: 2.3em;
+}
+/* default fp_section - end */
+
 /* 메인비주얼 - start */
 /* main_visual */
 .fp_section {
@@ -396,40 +430,6 @@ body {
 .swiper_wrap .swiper-button-next::after {
     display: none;
 }
-
-/* default fp_section - start */
-.fp_section_contents.flex {
-    justify-content: space-between;
-}
-.fp_section_header {
-    display: flex;
-    align-items: center;
-    height: 5.16em;
-    padding: 0 3.2em;
-}
-
-.fp_section_header .title {
-    font-size: 5.09em;
-    position: relative;
-    top: 0.3em;
-}
-
-.fp_section .sub_title {
-    margin-top: 0.6em;
-    font-size: 2em;
-    font-weight: 700;
-    line-height: 1.313em;
-}
-
-.fp_section .sub_title + p {
-    margin-top: 0.9em;
-    line-height: 1.12;
-}
-
-.fp_section .sub_title + p + .btn.arrow_right {
-    margin-top: 2.3em;
-}
-/* default fp_section - end */
 
 /* demo size */
 .fp_section.demo3,
